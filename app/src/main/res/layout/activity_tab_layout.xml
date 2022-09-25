@@ -47,9 +47,9 @@
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
-        android:layout_width="match_parent"
         android:id="@+id/viewPager"
-        android:layout_below="@+id/tablayout"
-        android:layout_height="match_parent"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tablayout" />
 
 </RelativeLayout>

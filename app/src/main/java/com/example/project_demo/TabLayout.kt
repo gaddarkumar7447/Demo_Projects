@@ -25,7 +25,8 @@ class TabLayout : AppCompatActivity() {
         tabItem3 = findViewById(R.id.founth)
         tabItem4 = findViewById(R.id.five)
         viewPager = findViewById(R.id.viewPager)
-        val fragmentAdapter = FragmentAdapter()
+        val fragmentAdapter = FragmentAdapter(this,supportFragmentManager,5)
+        viewPager.adapter = fragmentAdapter
 
         tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
