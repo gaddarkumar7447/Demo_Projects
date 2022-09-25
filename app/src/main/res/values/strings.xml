@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Project_Demo</string>
+    <string name="button">click button</string>
+    <string name="dialogTitle">Delete File</string>
+    <string name="dialogMessage">Deleting file may be harm your system</string>
+
+    <string name="action_call">Call</string>
+    <string name="action_sms">Sms</string>
 </resources>
