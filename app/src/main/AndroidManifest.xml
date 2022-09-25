@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Project_Demo"
         tools:targetApi="31">
         <activity
+            android:name=".TabLayout"
+            android:exported="false" />
+        <activity
             android:name=".Another"
             android:exported="false" />
         <activity

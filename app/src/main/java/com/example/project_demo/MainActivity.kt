@@ -42,5 +42,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, Another :: class.java))
         })
 
+        dataBinding.button3.setOnClickListener(
+            View.OnClickListener {
+                startActivity(Intent(this, TabLayout :: class.java))
+            }
+        )
+
     }
 }
