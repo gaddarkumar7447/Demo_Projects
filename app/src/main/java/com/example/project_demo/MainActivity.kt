@@ -8,45 +8,45 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.adapters.ActionMenuViewBindingAdapter
+import androidx.lifecycle.ViewModelProvider
 import com.example.project_demo.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var dataBinding : ActivityMainBinding
+    lateinit var mainViewModel: MainViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        mainViewModel = ViewModelProvider(this, MainViewModelFactory(application))[MainViewModel::class.java]
 
-        /*dataBinding.button.setOnClickListener(View.OnClickListener {
-            val builder = AlertDialog.Builder(this)
-            builder.setIcon(android.R.drawable.ic_dialog_alert)
+        setQuotes(mainViewModel.getQuotes())
+        previousButton()
+        nextButton()
+        sendText()
+    }
 
-            builder.setPositiveButton("Yes"){dialogInterface, which ->
-                Toast.makeText(applicationContext,"clicked yes",Toast.LENGTH_LONG).show()
-            }
-            builder.setNeutralButton("Cancel"){dialogInterface , which ->
-                Toast.makeText(applicationContext,"clicked cancel\n operation cancel",Toast.LENGTH_LONG).show()
-            }
+    private fun setQuotes(quotes : Quote){
+        dataBinding.quoteText.text = quotes.text
+        dataBinding.quoteAuthor.text = quotes.author
+    }
 
-            builder.setNegativeButton("No"){dialogInterface, which ->
-                Toast.makeText(applicationContext,"clicked No",Toast.LENGTH_LONG).show()
-            }
-            val alertDialog: AlertDialog = builder.create()
-            alertDialog.setCancelable(false)
-            alertDialog.show()
+    private fun previousButton(){
+        dataBinding.previousButton.setOnClickListener(View.OnClickListener {
+            setQuotes(mainViewModel.previousQuotes())
         })
-        dataBinding.button1.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(this, Another :: class.java))
+    }
+
+    private fun nextButton(){
+        dataBinding.nextButton.setOnClickListener(View.OnClickListener {
+            setQuotes(mainViewModel.nextQuotes())
         })
-
-        dataBinding.button3.setOnClickListener(
-            View.OnClickListener {
-                startActivity(Intent(this, TabLayout :: class.java))
-            }
-        )
-        dataBinding.button4.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(this, Coroutines :: class.java))
-        })*/
-
-
+    }
+    private fun sendText(){
+        dataBinding.floatingActionButton.setOnClickListener(View.OnClickListener {
+            val send = Intent(Intent.ACTION_SEND)
+            send.action = "text/plain"
+            send.putExtra(Intent.EXTRA_TEXT, mainViewModel.getQuotes().text)
+            startActivity(send)
+        })
     }
 }

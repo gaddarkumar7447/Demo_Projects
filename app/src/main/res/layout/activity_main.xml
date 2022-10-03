@@ -20,7 +20,7 @@
             android:text="QUOTIFY"
             android:id="@+id/textView"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="#e7e7e7"
             android:textSize="28sp" />
 
         <LinearLayout
@@ -80,20 +80,24 @@
                 android:textSize="30sp"
                 android:layout_marginLeft="15dp"
                 android:text="Presvious"
+                android:drawableTint="#80FFFFFF"
                 android:id="@+id/previousButton"
                 android:textColor="@color/black"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                app:drawableLeftCompat="@drawable/ic_baseline_keyboard_arrow_left_24" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/nextButton"
-                android:layout_marginRight="15dp"
-                android:text="NEXT"
+                android:layout_marginEnd="15dp"
+                android:text="Next"
                 android:textColor="@color/black"
                 android:textAlignment="textEnd"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                app:drawableEndCompat="@drawable/ic_baseline_chevron_right_24"
+                app:drawableTint="#80FFFFFF" />
         </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
